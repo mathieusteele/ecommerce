@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= title %></title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include ("../includes/nav.ejs") %>
+    <div class="jumbotron">
+      <div class="container">
+        <h1><%= title %></h1>
+
+        <% if (errors.length > 0) { %> Errors (<%= errors.length %>):
+
+        <ul>
+          <% for (let error of errors) { %>
+          <li>
+            <%= error %>
+
+            <form method="POST" action="/books/clear-error">
+              <input
+                id="book"
+                type="hidden"
+                name="error"
+                value="<%= error %>"
+              />
+              <button type="submit">OK</button>
+            </form>
+          </li>
+          <% } %>
+        </ul>
+
+        <% } %> <% if (books.length > 0) { %> There are <%= books.length %>
+        books:
+
+        <ul>
+          <% for (let book of books) { %>
+          <li>
+            <%= book.title %> by <%= book.author %>
+            <a
+              href="/books/edit-product?title=<%= book.title %>&author=<%= book.author %>"
+              >Edit</a
+            >
+            <a
+              href="/books/remove-product?title=<%= book.title %>&author=<%= book.author %>"
+              >Delete</a
+            >
+          </li>
+          <% } %>
+        </ul>
+
+        <% } else { %> There are NO books. You can be the first! <% } %>
+
+        <a href="/books/add-product">Add a book</a>
+      </div>
+    </div>
+    <div class="container"></div>
+  </body>
+</html>
