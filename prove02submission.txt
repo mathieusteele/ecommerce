@@ -1,0 +1,39 @@
+After completing the assignment, be sure to push to Github and Heroku.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application (e.g., Heroku):
+
+    https://serene-atoll-95168.herokuapp.com/
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+
+    https://github.com/mathieusteele/ecommerce
+
+3. Briefly list and describe the elements of the application that are functioning. 
+
+    Users can view a list of books and add, edit, and delete books.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+
+    I am not aware of any assigned steps that are not working correctly.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+
+    I was able to push myself to enable editing of books.
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+
+    I'm familiar with Heroku from using it before but I think the instructions may not have been as helpful for me if I didn't have experience with Heroku. It's the area I think students could get the most tripped up on this week.
+
+7. Please select the category you feel best describes your assignment:
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+   I feel my assignment exceeded functional requirements.
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+
+    I feel this way because I selected a challenging stretch of being able to edit books.
