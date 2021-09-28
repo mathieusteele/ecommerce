@@ -6,5 +6,12 @@
     "imageUrl": "My image url",
     "description": "rekre;lrej",
     "price": "444444"
+  },
+  {
+    "id": "0.35288147552475335",
+    "title": "Car",
+    "author": "",
+    "imageUrl": "Fast Car              \r\n              ",
+    "description": "111000"
   }
 ]
