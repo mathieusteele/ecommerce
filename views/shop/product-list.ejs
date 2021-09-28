@@ -18,29 +18,42 @@
       <div class="container">
         <h1><%= title %></h1>
 
-        <% if (products.length > 0) { %> There are <%= products.length %> books:
+        <% if (products.length > 0) { %>
 
-        <ul>
+        <div class="row">
           <% for (let product of products) { %>
-          <li>
-            <%= product.title %>
-            <br />
-            description: <%= product.description %>
-            <br />
-            image url: <%= product.imageUrl %>
-            <br />
-            price: <%= product.price %>
-            <br />
-            <a href="/products/<%= product.id %>" class="btn">Details</a>
 
-            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-          </li>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
+              <div class="caption">
+                <h3><%= product.title %></h3>
+                <p><%= product.description %></p>
+                <p>$ <%= product.price %></p>
+                <p>
+                  <a
+                    href="/products/<%= product.id %>"
+                    class="btn btn-default"
+                    role="button"
+                  >
+                    Details
+                  </a>
+
+                  <%- include('../includes/add-to-cart.ejs', {product: product})
+                  %>
+                </p>
+              </div>
+            </div>
+          </div>
+
           <% } %>
-        </ul>
+        </div>
 
         <% } else { %> There are NO products. You can be the first! <% } %>
 
-        <a href="/admin/add-product">Add Product</a>
+        <a href="/admin/add-product" role="button" class="btn btn-primary"
+          >Add Product</a
+        >
       </div>
     </div>
     <div class="container"></div>

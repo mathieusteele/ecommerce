@@ -14,72 +14,79 @@
 
   <body>
     <%- include ("../includes/nav.ejs") %>
-    <div class="jumbotron">
+    <div class="">
       <div class="container">
-        <h1><%= title %></h1>
-
-        <form
-          method="POST"
-          action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
-        >
-          <div class="form-control">
-            <label for="title"
-              >title
-              <input
-                id="title"
-                type="text"
-                name="title"
-                value="<% if
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title"><%= title %></h1>
+          </div>
+          <div class="panel-body">
+            <form
+              method="POST"
+              class="col-md-4"
+              action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+            >
+              <div class="form-group">
+                <label for="title">Title </label>
+                <input
+                  id="title"
+                  type="text"
+                  name="title"
+                  class="form-control"
+                  value="<% if
               (editing) { %><%= product.title %><% } %>"
-            /></label>
-          </div>
-          <br />
-          <div class="form-control">
-            <label for="imageUrl"
-              >Image URL
-              <input
-                id="imageUrl"
-                type="text"
-                name="imageUrl"
-                value="<% if
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="imageUrl">Image URL </label>
+                <input
+                  id="imageUrl"
+                  type="text"
+                  name="imageUrl"
+                  class="form-control"
+                  value="<% if
               (editing) { %><%= product.imageUrl %><% } %>"
-            /></label>
-          </div>
-          <br />
-          <div class="form-control">
-            <label for="price"
-              >Price
-              <input
-                id="price"
-                type="number"
-                name="price"
-                step="0.01"
-                value="<% if
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input
+                  type="number"
+                  name="price"
+                  class="form-control"
+                  id="price"
+                  step="0.01"
+                  value="<% if
               (editing) { %><%= product.price %><% } %>"
-            /></label>
-          </div>
-          <br />
-          <div class="form-control">
-            <label for="description"
-              >Description
-              <textarea name="description" id="description" rows="5">
+                />
+              </div>
+
+              <br />
+              <div class="form-group">
+                <label for="description">Description </label>
+                <textarea
+                  name="description"
+                  id="description"
+                  rows="5"
+                  class="form-control"
+                >
               <% if (editing) { %><%= product.description %><% } %>
-              </textarea>
-            </label>
+              </textarea
+                >
+              </div>
+
+              <% if (editing) { %>
+              <input type="hidden" name="productId" value="<%= product.id %>" />
+              <% } %>
+
+              <button type="submit" class="btn btn-primary">
+                <% if (editing) { %>Update<% } else { %>Add<% } %> Product
+              </button>
+            </form>
           </div>
-
-          <% if (editing) { %>
-          <input
-            type="hidden"
-            name="productId"
-            value="<%= product.description %>"
-          />
-          <% } %>
-
-          <button type="submit">
-            <% if (editing) { %>Update<% } else { %>Add<% } %> Product
-          </button>
-        </form>
+        </div>
       </div>
     </div>
     <div class="container"></div>
