@@ -18,48 +18,15 @@
       <div class="container">
         <h1><%= title %></h1>
 
-        <% if (errors.length > 0) { %> Errors (<%= errors.length %>):
-
-        <ul>
-          <% for (let error of errors) { %>
-          <li>
-            <%= error %>
-
-            <form method="POST" action="/books/clear-error">
-              <input
-                id="book"
-                type="hidden"
-                name="error"
-                value="<%= error %>"
-              />
-              <button type="submit">OK</button>
-            </form>
-          </li>
-          <% } %>
-        </ul>
-
-        <% } %> <% if (products.length > 0) { %> There are <%= products.length
-        %> books:
+        <% if (products.length > 0) { %>
 
         <ul>
           <% for (let product of products) { %>
-          <li>
-            <%= product.title %> by <%= product.author %>
-            <a
-              href="/admin/edit-product?title=<%= product.title %>&author=<%= product.author %>"
-              >Edit</a
-            >
-            <a
-              href="/admin/remove-product?title=<%= product.title %>&author=<%= product.author %>"
-              >Delete</a
-            >
-          </li>
+          <li><%= product.title %></li>
           <% } %>
         </ul>
 
-        <% } else { %> There are NO books. You can be the first! <% } %>
-
-        <a href="/admin/add-product">Add a book</a>
+        <% } else { %> There are NO products. You can be the first! <% } %>
       </div>
     </div>
     <div class="container"></div>
