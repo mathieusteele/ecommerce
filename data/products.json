@@ -1,17 +1,1 @@
-[
-  {
-    "id": "12345",
-    "title": "My title",
-    "author": "My Author",
-    "imageUrl": "My image url",
-    "description": "rekre;lrej",
-    "price": "444444"
-  },
-  {
-    "id": "0.35288147552475335",
-    "title": "Car",
-    "author": "",
-    "imageUrl": "Fast Car              \r\n              ",
-    "description": "111000"
-  }
-]
+[{"id":"0.4101218372287967","title":"Mouse","imageUrl":"asdf","description":"asdf              \r\n              ","price":"4"}]
