@@ -31,16 +31,17 @@ module.exports = class Product {
         const existingProductIndex = products.findIndex(
           (prod) => prod.id === this.id
         );
+        console.log(existingProductIndex);
         const updatedProducts = [...products];
         updatedProducts[existingProductIndex] = this;
-        fs.writeFile(p, JSON.stringify(products), (err) => {
-          console.log(err);
+        fs.writeFile(p, JSON.stringify(updatedProducts), (err) => {
+          console.log("err saving existing" + err);
         });
       } else {
         this.id = Math.random().toString();
         products.push(this);
         fs.writeFile(p, JSON.stringify(products), (err) => {
-          console.log(err);
+          console.log("err saving new " + err);
         });
       }
     });
@@ -58,7 +59,7 @@ module.exports = class Product {
           }
         })
       );
-      callback(theProduct);
+      // callback(theProduct);
     });
   }
 
@@ -68,8 +69,8 @@ module.exports = class Product {
 
   static findById(id, callback) {
     getProductsFromFile((products) => {
-      const theProduct = products.find((product) => product.id === id);
-      callback(theProduct);
+      const product = products.find((product) => product.id === id);
+      callback(product);
     });
   }
 };
