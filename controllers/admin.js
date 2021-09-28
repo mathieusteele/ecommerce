@@ -1,105 +1,76 @@
 const Product = require("../models/product");
 
-const errors = [];
-
 exports.getProducts = (req, res, next) => {
   Product.fetchAll((products) => {
     res.render("admin/products", {
       title: "Admin Products",
       path: "/admin/products",
       products: products,
-      errors: [],
     });
   });
 };
 
 exports.getAddProduct = (req, res, next) => {
-  res.render("admin/add-product", {
+  res.render("admin/edit-product", {
     title: "Add Product",
     path: "/add-product",
-    errors: errors,
+    editing: false,
   });
 };
 
 exports.postAddProduct = (req, res, next) => {
-  Product.fetchAll((products) => {
-    if (products.includes({ title: req.body.title, author: req.body.author })) {
-      errors.push(
-        `Error! A book with the name "${req.body.title}" and author ${req.body.title} already exists.`
-      );
-      res.writeHead(302, { Location: "/admin/add-product" });
-      res.end();
-    } else {
-      const title = req.body.title;
-      const author = req.body.author;
-      const imageUrl = req.body.imageUrl;
-      const description = req.body.description;
-      const price = req.body.price;
+  const title = req.body.title;
+  const imageUrl = req.body.imageUrl;
+  const price = req.body.price;
+  const description = req.body.description;
 
-      const product = new Product(title, author, imageUrl, description, price);
-      product.save();
-      res.writeHead(302, { Location: "/admin/products" });
-      res.end();
-    }
-  });
+  const product = new Product(null, title, imageUrl, description, price);
+  product.save();
+  res.writeHead(302, { Location: "/admin/products" });
+  res.end();
 };
 
 exports.getEditProduct = (req, res, next) => {
-  res.render("admin/edit-product", {
-    title: "Edit Product",
-    path: "/edit-product",
-    productTitle: req.query.title,
-    productAuthor: req.query.author,
-    errors: errors,
+  const editMode = req.query.edit;
+  if (!editMode) {
+    return res.redirect("/");
+  }
+  const productId = req.params.productId;
+  Product.findById(productId, (product) => {
+    if (!product) {
+      return res.redirect("/");
+    }
+    res.render("admin/edit-product", {
+      title: "Edit Product",
+      path: "/edit-product",
+      editing: editMode,
+      product: product,
+    });
   });
 };
 
 exports.postEditProduct = (req, res, next) => {
-  Product.fetchAll((products) => {
-    productIndex = products.findIndex(
-      (book) =>
-        book.title === req.body.oldTitle && book.author === req.body.oldAuthor
-    );
+  const productId = req.body.productId;
+  const updatedTitle = req.body.title;
+  const updatedPrice = req.body.price;
+  const updatedDescription = req.body.description;
+  const updatedImageUrl = req.body.imageUrl;
 
-    products[productIndex].title = req.body.newTitle;
-    products[productIndex].author = req.body.newAuthor;
-
-    res.writeHead(302, { Location: "/admin/products" });
-    res.end();
-  });
-};
-
-exports.getRemoveProduct = (req, res, next) => {
-  res.render("admin/remove-product", {
-    title: "Delete Product",
-    path: "/delete-product",
-    productTitle: req.query.title,
-    productAuthor: req.query.author,
-    errors: errors,
-  });
-};
-
-exports.postRemoveProduct = (req, res, next) => {
-  const products = Product.fetchAll();
-
-  productIndex = products.findIndex(
-    (book) =>
-      book.title === req.body.oldTitle && book.author === req.body.oldAuthor
+  const updatedProduct = new Product(
+    productId,
+    updatedTitle,
+    updatedImageUrl,
+    updatedDescription,
+    updatedPrice
   );
 
-  products.splice(productIndex, 1);
-
-  res.writeHead(302, { Location: "/admin" });
-  res.end();
+  updatedProduct.save();
+  res.redirect("/admin/products");
 };
 
-exports.postRemoveError = (req, res, next) => {
-  if (errors.includes(req.body.error)) {
-    position = errors.indexOf(req.body.error);
+exports.postDeleteProduct = (req, res, next) => {
+  const productId = req.body.productId;
 
-    errors.splice(position, 1);
-  }
-
-  res.writeHead(302, { Location: "/admin" });
-  res.end();
+  Product.deleteById(productId);
+  res.redirect("/admin/products");
 };
