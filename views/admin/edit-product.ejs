@@ -18,49 +18,67 @@
       <div class="container">
         <h1><%= title %></h1>
 
-        <% if (errors.length > 0) { %> Errors (<%= errors.length %>):
-
-        <ul>
-          <% for (let error of errors) { %>
-          <li>
-            <%= error %>
-
-            <form method="POST" action="/admin/clear-error">
+        <form
+          method="POST"
+          action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+        >
+          <div class="form-control">
+            <label for="title"
+              >title
               <input
-                id="book"
-                type="hidden"
-                name="error"
-                value="<%= error %>"
-              />
-              <button type="submit">OK</button>
-            </form>
-          </li>
+                id="title"
+                type="text"
+                name="title"
+                value="<% if
+              (editing) { %><%= product.title %><% } %>"
+            /></label>
+          </div>
+          <br />
+          <div class="form-control">
+            <label for="imageUrl"
+              >Image URL
+              <input
+                id="imageUrl"
+                type="text"
+                name="imageUrl"
+                value="<% if
+              (editing) { %><%= product.imageUrl %><% } %>"
+            /></label>
+          </div>
+          <br />
+          <div class="form-control">
+            <label for="price"
+              >Price
+              <input
+                id="price"
+                type="number"
+                name="price"
+                step="0.01"
+                value="<% if
+              (editing) { %><%= product.price %><% } %>"
+            /></label>
+          </div>
+          <br />
+          <div class="form-control">
+            <label for="description"
+              >Description
+              <textarea name="description" id="description" rows="5">
+              <% if (editing) { %><%= product.description %><% } %>
+              </textarea>
+            </label>
+          </div>
+
+          <% if (editing) { %>
+          <input
+            type="hidden"
+            name="productId"
+            value="<%= product.description %>"
+          />
           <% } %>
-        </ul>
 
-        <% } %>
-
-        <form method="POST" action="/admin/edit-product">
-          <input type="hidden" name="oldTitle" value="<%= productTitle %>" />
-          <input type="hidden" name="oldAuthor" value="<%= productAuthor %>" />
-
-          <label for="title"
-            >title
-            <input
-              id="title"
-              type="text"
-              name="newTitle"
-              value="<%= productTitle %>"
-          /></label>
-          <label for="author"
-            >author
-            <input
-              id="author"
-              type="text"
-              name="newAuthor"
-              value="<%= productAuthor %>"
-          /></label>
-          <button type="submit">Save</button>
+          <button type="submit">
+            <% if (editing) { %>Update<% } else { %>Add<% } %> Product
+          </button>
         </form>
       </div>
     </div>
