@@ -18,33 +18,12 @@
       <div class="container">
         <h1><%= title %></h1>
 
-        <% if (errors.length > 0) { %> Errors (<%= errors.length %>):
-
-        <ul>
-          <% for (let error of errors) { %>
-          <li>
-            <%= error %>
-
-            <form method="POST" action="/admin/clear-error">
-              <input
-                id="book"
-                type="hidden"
-                name="error"
-                value="<%= error %>"
-              />
-              <button type="submit">OK</button>
-            </form>
-          </li>
-          <% } %>
-        </ul>
-
-        <% } %> <% if (products.length > 0) { %> There are <%= products.length
-        %> books:
+        <% if (products.length > 0) { %> There are <%= products.length %> books:
 
         <ul>
           <% for (let product of products) { %>
           <li>
-            <%= product.title %> by <%= product.author %>
+            <%= product.title %>
             <br />
             description: <%= product.description %>
             <br />
@@ -54,14 +33,14 @@
             <br />
             <a href="/products/<%= product.id %>" class="btn">Details</a>
 
-            <%- include('../includes/add-to-cart.ejs') %>
+            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
           </li>
           <% } %>
         </ul>
 
-        <% } else { %> There are NO books. You can be the first! <% } %>
+        <% } else { %> There are NO products. You can be the first! <% } %>
 
-        <a href="/admin/add-product">Add a book</a>
+        <a href="/admin/add-product">Add Product</a>
       </div>
     </div>
     <div class="container"></div>
