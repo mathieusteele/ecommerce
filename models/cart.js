@@ -1,8 +1,11 @@
 const fs = require("fs");
 const path = require("path");
-const rootDir = require("../util/path");
 
-const p = path.join(rootDir, "data", "cart.json");
+const p = path.join(
+  path.dirname(process.mainModule.filename),
+  "data",
+  "cart.json"
+);
 
 module.exports = class Cart {
   constructor() {
@@ -11,16 +14,19 @@ module.exports = class Cart {
   }
 
   static addProduct(id, productPrice) {
-    fs.readFile(p, (error, fileContent) => {
+    // Fetch the previous cart
+    fs.readFile(p, (err, fileContent) => {
       let cart = { products: [], totalPrice: 0 };
-      if (!error) {
+      if (!err) {
         cart = JSON.parse(fileContent);
       }
+      // Analyze the cart => Find existing product
       const existingProductIndex = cart.products.findIndex(
         (prod) => prod.id === id
       );
       const existingProduct = cart.products[existingProductIndex];
       let updatedProduct;
+      // Add new product/ increase quantity
       if (existingProduct) {
         updatedProduct = { ...existingProduct };
         updatedProduct.qty = updatedProduct.qty + 1;
@@ -32,14 +38,14 @@ module.exports = class Cart {
       }
       cart.totalPrice = cart.totalPrice + +productPrice;
       fs.writeFile(p, JSON.stringify(cart), (err) => {
-        console.log("error writing file in addProduct" + err);
+        console.log(err);
       });
     });
   }
 
   static deleteProduct(id, productPrice) {
-    fs.readFile(p, (error, fileContent) => {
-      if (error) {
+    fs.readFile(p, (err, fileContent) => {
+      if (err) {
         return;
       }
       const updatedCart = { ...JSON.parse(fileContent) };
@@ -55,7 +61,7 @@ module.exports = class Cart {
         updatedCart.totalPrice - productPrice * productQty;
 
       fs.writeFile(p, JSON.stringify(updatedCart), (err) => {
-        console.log("could not write cart" + err);
+        console.log(err);
       });
     });
   }
