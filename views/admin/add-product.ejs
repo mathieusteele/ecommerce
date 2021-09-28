@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= title %></title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include ("../includes/nav.ejs") %>
+    <div class="jumbotron">
+      <div class="container">
+        <h1><%= title %></h1>
+
+        <% if (errors.length > 0) { %> Errors (<%= errors.length %>):
+
+        <ul>
+          <% for (let error of errors) { %>
+          <li>
+            <%= error %>
+
+            <form method="POST" action="/admin/clear-error">
+              <input
+                id="book"
+                type="hidden"
+                name="error"
+                value="<%= error %>"
+              />
+              <button type="submit">OK</button>
+            </form>
+          </li>
+          <% } %>
+        </ul>
+
+        <% } %>
+
+        <form method="POST" action="/admin/add-product">
+          <div class="form-control">
+            <label for="title"
+              >title <input id="title" type="text" name="title"
+            /></label>
+          </div>
+          <br />
+          <div class="form-control">
+            <label for="author"
+              >author <input id="author" type="text" name="author"
+            /></label>
+          </div>
+          <br />
+          <div class="form-control">
+            <label for="imageUrl"
+              >Image URL <input id="imageUrl" type="text" name="imageUrl"
+            /></label>
+          </div>
+          <br />
+          <div class="form-control">
+            <label for="price"
+              >Price <input id="price" type="number" name="price" step="0.01"
+            /></label>
+          </div>
+          <br />
+          <div class="form-control">
+            <label for="description"
+              >Description
+              <textarea name="description" id="description" rows="5"></textarea>
+            </label>
+          </div>
+
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+    <div class="container"></div>
+  </body>
+</html>

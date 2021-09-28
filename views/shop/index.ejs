@@ -38,30 +38,28 @@
           <% } %>
         </ul>
 
-        <% } %>
+        <% } %> <% if (products.length > 0) { %> There are <%= products.length
+        %> books:
 
-        <form method="POST" action="/books/edit-product">
-          <input type="hidden" name="oldTitle" value="<%= productTitle %>" />
-          <input type="hidden" name="oldAuthor" value="<%= productAuthor %>" />
+        <ul>
+          <% for (let product of products) { %>
+          <li>
+            <%= product.title %> by <%= product.author %>
+            <a
+              href="/admin/edit-product?title=<%= product.title %>&author=<%= product.author %>"
+              >Edit</a
+            >
+            <a
+              href="/admin/remove-product?title=<%= product.title %>&author=<%= product.author %>"
+              >Delete</a
+            >
+          </li>
+          <% } %>
+        </ul>
 
-          <label for="title"
-            >title
-            <input
-              id="title"
-              type="text"
-              name="newTitle"
-              value="<%= productTitle %>"
-          /></label>
-          <label for="author"
-            >author
-            <input
-              id="author"
-              type="text"
-              name="newAuthor"
-              value="<%= productAuthor %>"
-          /></label>
-          <button type="submit">Save</button>
-        </form>
+        <% } else { %> There are NO books. You can be the first! <% } %>
+
+        <a href="/admin/add-product">Add a book</a>
       </div>
     </div>
     <div class="container"></div>

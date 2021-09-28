@@ -2,23 +2,22 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000;
-const rootDir = require("./util/path");
+// const rootDir = require("./util/path");
 
-const router = express.Router();
+const errorController = require("./controllers/error");
 
 const app = express();
 
-const indexRoutes = require("./routes/index");
-const bookRoutes = require("./routes/books");
+const shopRoutes = require("./routes/shop");
+const adminRoutes = require("./routes/admin");
 
 app
   .use(express.static(path.join(__dirname, "public")))
-  .set("views", path.join(__dirname, "views"))
+  // .set("views", path.join(__dirname, "views"))
+  .set("views", "views")
   .set("view engine", "ejs")
   .use(bodyParser.urlencoded({ extended: false }))
-  .use("/", indexRoutes)
-  .use("/books", bookRoutes)
-  .use((req, res, next) => {
-    res.render("pages/404", { title: "404 - Page Not Found", path: req.url });
-  })
+  .use(shopRoutes)
+  .use("/admin", adminRoutes)
+  .use(errorController.get404)
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

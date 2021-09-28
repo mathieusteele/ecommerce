@@ -5,9 +5,34 @@
         <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
       </li>
 
-      <li class="<%= path === '/books' ? 'active' : ''%>">
-        <a href="/books"
-          ><span class="glyphicon glyphicon-book"></span> Books</a
+      <li class="<%= path === '/shop' ? 'active' : ''%>">
+        <a href="/shop"><span class="glyphicon glyphicon-book"></span> Shop</a>
+      </li>
+      <li class="<%= path === '/cart' ? 'active' : ''%>">
+        <a href="/cart"><span class="glyphicon glyphicon-book"></span> Cart</a>
+      </li>
+
+      <li class="<%= path === '/orders' ? 'active' : ''%>">
+        <a href="/orders"
+          ><span class="glyphicon glyphicon-book"></span> Orders</a
+        >
+      </li>
+
+      <li class="<%= path === '/products' ? 'active' : ''%>">
+        <a href="/products"
+          ><span class="glyphicon glyphicon-book"></span> Products</a
+        >
+      </li>
+
+      <li class="<%= path === '/admin/add-product' ? 'active' : ''%>">
+        <a href="/admin/add-product"
+          ><span class="glyphicon glyphicon-book"></span> Add Product</a
+        >
+      </li>
+
+      <li class="<%= path === '/admin/products' ? 'active' : ''%>">
+        <a href="/admin/products"
+          ><span class="glyphicon glyphicon-book"></span> Admin Products</a
         >
       </li>
     </ul>
