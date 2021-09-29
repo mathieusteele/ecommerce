@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
+    "build:css": "NODE_ENV=production postcss public/css/tailwind.css -o public/css/styles.css",
+    "dev": "npm run build:css && nodemon app.js",
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +17,9 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.13"
+    "autoprefixer": "^10.3.6",
+    "nodemon": "^2.0.13",
+    "postcss": "^8.3.8",
+    "tailwindcss": "^2.2.16"
   }
 }
