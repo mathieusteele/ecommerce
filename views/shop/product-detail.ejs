@@ -1,8 +1,15 @@
-<%- include('../includes/head.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= title %></title>
 
-</head>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+  </head>
 
-<body>
+  <body>
 
     <%- include('../includes/nav.ejs') %>
     <main class="centered">
@@ -15,5 +22,7 @@
         <%- include('../includes/add-to-cart.ejs') %>
     </form>
     </main>
-    <%- include('../includes/end.ejs') %>
+    <%- include('../includes/footer.ejs') %>
 
+</body>
+</html>
