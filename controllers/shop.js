@@ -51,6 +51,7 @@ exports.getCart = (req, res, next) => {
         title: "Your Cart",
         path: "/cart",
         products: cartProducts,
+        cart: cart,
       });
     });
   });
