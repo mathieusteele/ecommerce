@@ -10,13 +10,13 @@ const p = path.join(
 module.exports = class Cart {
   constructor() {
     this.products = [];
-    this.totalPrice = 0;
+    this.totalPriceInCents = 0;
   }
 
-  static addProduct(id, productPrice) {
+  static addProduct(id, productPriceInCents) {
     // Fetch the previous cart
     fs.readFile(p, (err, fileContent) => {
-      let cart = { products: [], totalPrice: 0 };
+      let cart = { products: [], totalPriceInCents: 0 };
       if (!err) {
         cart = JSON.parse(fileContent);
       }
@@ -36,20 +36,21 @@ module.exports = class Cart {
         updatedProduct = { id: id, qty: 1 };
         cart.products = [...cart.products, updatedProduct];
       }
-      cart.totalPrice = cart.totalPrice + +productPrice;
+      cart.totalPriceInCents = cart.totalPriceInCents + +productPriceInCents;
       fs.writeFile(p, JSON.stringify(cart), (err) => {
         console.log(err);
       });
     });
   }
 
-  static deleteProduct(id, productPrice) {
+  static deleteProduct(id, productPriceInCents) {
     fs.readFile(p, (err, fileContent) => {
       if (err) {
         return;
       }
       const updatedCart = { ...JSON.parse(fileContent) };
       const product = updatedCart.products.find((prod) => prod.id === id);
+      console.log(product);
       if (!product) {
         return;
       }
@@ -57,8 +58,8 @@ module.exports = class Cart {
       updatedCart.products = updatedCart.products.filter(
         (prod) => prod.id !== id
       );
-      updatedCart.totalPrice =
-        updatedCart.totalPrice - productPrice * productQty;
+      updatedCart.totalPriceInCents =
+        updatedCart.totalPriceInCents - productPriceInCents * productQty;
 
       fs.writeFile(p, JSON.stringify(updatedCart), (err) => {
         console.log(err);

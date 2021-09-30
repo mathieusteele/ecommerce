@@ -22,7 +22,7 @@ module.exports = class Product {
     this.title = title;
     this.imageUrl = imageUrl;
     this.description = description;
-    this.price = price;
+    this.priceInCents = price * 100;
   }
 
   save() {
@@ -53,7 +53,7 @@ module.exports = class Product {
       const updatedProducts = products.filter((product) => product.id !== id);
       fs.writeFile(p, JSON.stringify(updatedProducts), (err) => {
         if (!err) {
-          Cart.deleteProduct(id, product.price);
+          Cart.deleteProduct(id, product.priceInCents);
         }
       });
     });
