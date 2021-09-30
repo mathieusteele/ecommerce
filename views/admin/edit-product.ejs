@@ -11,81 +11,181 @@
 
   <body>
     <%- include ("../includes/nav.ejs") %>
-    <div class="">
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="panel-title"><%= title %></h1>
-          </div>
-          <div class="panel-body">
-            <form
-              method="POST"
-              class="col-md-4"
-              action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
-            >
-              <div class="form-group">
-                <label for="title">Title </label>
+
+    <main>
+      <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-0">
+        <h1
+          class="
+            text-3xl
+            font-extrabold
+            text-center
+            tracking-tight
+            text-gray-900
+            sm:text-4xl
+          "
+        >
+          <%= title %>
+        </h1>
+
+        <form
+          method="POST"
+          class="mt-12"
+          action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+        >
+          <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <div class="sm:col-span-3">
+              <label
+                for="title"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Title
+              </label>
+              <div class="mt-1">
                 <input
-                  id="title"
                   type="text"
                   name="title"
-                  class="form-control"
+                  id="title"
+                  class="
+                    shadow-sm
+                    focus:ring-indigo-500 focus:border-indigo-500
+                    block
+                    w-full
+                    sm:text-sm
+                    border-gray-300
+                    rounded-md
+                  "
                   value="<% if
-              (editing) { %><%= product.title %><% } %>"
+                  (editing) { %><%= product.title %><% } %>"
                 />
               </div>
-              <br />
-              <div class="form-group">
-                <label for="imageUrl">Image URL </label>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label
+                for="last-name"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Last name
+              </label>
+              <div class="mt-1">
                 <input
-                  id="imageUrl"
                   type="text"
-                  name="imageUrl"
-                  class="form-control"
-                  value="<% if
-              (editing) { %><%= product.imageUrl %><% } %>"
+                  name="last-name"
+                  id="last-name"
+                  autocomplete="family-name"
+                  class="
+                    shadow-sm
+                    focus:ring-indigo-500 focus:border-indigo-500
+                    block
+                    w-full
+                    sm:text-sm
+                    border-gray-300
+                    rounded-md
+                  "
                 />
               </div>
-              <br />
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input
-                  type="number"
-                  name="price"
-                  class="form-control"
-                  id="price"
-                  step="0.01"
-                  value="<% if
-              (editing) { %><%= product.price %><% } %>"
-                />
-              </div>
+            </div>
 
-              <br />
-              <div class="form-group">
-                <label for="description">Description </label>
+            <div>
+              <label
+                for="about"
+                class="block text-sm font-medium text-gray-700"
+              >
+                About
+              </label>
+              <div class="mt-1">
                 <textarea
-                  name="description"
-                  id="description"
-                  rows="5"
-                  class="form-control"
-                >
-              <% if (editing) { %><%= product.description %><% } %>
-              </textarea
-                >
+                  id="about"
+                  name="about"
+                  rows="3"
+                  class="
+                    shadow-sm
+                    focus:ring-indigo-500 focus:border-indigo-500
+                    mt-1
+                    block
+                    w-full
+                    sm:text-sm
+                    border border-gray-300
+                    rounded-md
+                  "
+                  placeholder="you@example.com"
+                ></textarea>
               </div>
-
-              <% if (editing) { %>
-              <input type="hidden" name="productId" value="<%= product.id %>" />
-              <% } %>
-
-              <button type="submit" class="btn btn-primary">
-                <% if (editing) { %>Update<% } else { %>Add<% } %> Product
-              </button>
-            </form>
+              <p class="mt-2 text-sm text-gray-500">
+                Brief description for your profile. URLs are hyperlinked.
+              </p>
+            </div>
           </div>
-        </div>
+
+          <div class="form-group">
+            <label for="imageUrl">Image URL </label>
+            <input
+              id="imageUrl"
+              type="text"
+              name="imageUrl"
+              class="form-control"
+              value="<% if
+          (editing) { %><%= product.imageUrl %><% } %>"
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input
+              type="number"
+              name="price"
+              class="form-control"
+              id="price"
+              step="0.01"
+              value="<% if
+          (editing) { %><%= product.priceInCents/100 %><% } %>"
+            />
+          </div>
+
+          <br />
+          <div class="form-group">
+            <label for="description">Description </label>
+            <textarea
+              name="description"
+              id="description"
+              rows="5"
+              class="form-control"
+            >
+          <% if (editing) { %><%= product.description %><% } %>
+          </textarea
+            >
+          </div>
+
+          <% if (editing) { %>
+          <input type="hidden" name="productId" value="<%= product.id %>" />
+          <% } %>
+
+          <button
+            type="submit"
+            class="
+              ml-3
+              inline-flex
+              justify-center
+              py-2
+              px-4
+              border border-transparent
+              shadow-sm
+              text-sm
+              font-medium
+              rounded-md
+              text-white
+              bg-indigo-600
+              hover:bg-indigo-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
+            "
+          >
+            <% if (editing) { %>Update<% } else { %>Add<% } %> Product
+          </button>
+        </form>
       </div>
-    </div>
-    <div class="container"></div>
+    </main>
   </body>
 </html>
