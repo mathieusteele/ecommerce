@@ -4,7 +4,7 @@ const Cart = require("../models/cart");
 exports.getIndex = (req, res, next) => {
   Product.fetchAll((products) => {
     res.render("shop/index", {
-      title: "Shop",
+      title: "Steele's Meals",
       path: "/",
       products: products,
     });
@@ -16,8 +16,8 @@ exports.getProductById = (req, res, next) => {
 
   Product.findById(productId, (product) => {
     res.render("shop/product-detail", {
-      title: "Product Details",
-      path: "/products",
+      title: "Entrée Details",
+      path: "/menu",
       product: product,
     });
   });
@@ -26,8 +26,8 @@ exports.getProductById = (req, res, next) => {
 exports.getProducts = (req, res, next) => {
   Product.fetchAll((products) => {
     res.render("shop/product-list", {
-      title: "All Products",
-      path: "/products",
+      title: "All Menu Items",
+      path: "/menu",
       products: products,
     });
   });

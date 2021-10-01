@@ -5,30 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title><%= title %></title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
-    />
+
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   </head>
 
   <body>
-    <%- include ("../includes/nav.ejs") %>
-    <div class="jumbotron">
-      <div class="container">
-        <h1><%= title %></h1>
+    <%- include('../includes/nav.ejs') %>
+    <main>
 
-        <% if (products.length > 0) { %>
+      <div class="bg-white">
+        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-0">
+          <h1
+            class="
+              text-3xl
+              font-extrabold
+              text-center
+              tracking-tight
+              text-gray-900
+              sm:text-4xl
+            "
+          >
+          <%= title %>
+          </h1>
 
-        <ul>
-          <% for (let product of products) { %>
-          <li><%= product.title %></li>
-          <% } %>
-        </ul>
-
-        <% } else { %> There are NO products. You can be the first! <% } %>
-      </div>
-    </div>
-    <div class="container"></div>
-  </body>
+          <div class="mt-12 text-center">
+      
+              <p>Learn more about our restaurant</p>
+    
+          </div>
+        </div>
+        </div>
+      </main>
+    <%- include('../includes/footer.ejs') %>
+  </div>
+</div>
+</body>
 </html>
+

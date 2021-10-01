@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
       <div class="flex">
-        <div class="flex-shrink-0 flex items-center">Steele's Wheels</div>
+        <div class="flex-shrink-0 flex items-center">Steele's Meals</div>
         <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
           <% if (path === '/') { %>
           <a
@@ -19,7 +19,7 @@
               font-medium
             "
           >
-            Shop
+            Home
           </a>
           <% } else { %>
           <a
@@ -37,11 +37,11 @@
               font-medium
             "
           >
-            Shop
+            Home
           </a>
-          <% } %> <% if (path === '/products') { %>
+          <% } %> <% if (path === '/menu') { %>
           <a
-            href="/products"
+            href="/menu"
             class="
               border-indigo-500
               text-gray-900
@@ -54,11 +54,11 @@
               font-medium
             "
           >
-            Products
+            Menu
           </a>
           <% } else { %>
           <a
-            href="/products"
+            href="/menu"
             class="
               border-transparent
               text-gray-500
@@ -72,7 +72,7 @@
               font-medium
             "
           >
-            Products
+            Menu
           </a>
           <% } %> <% if (path === '/cart') { %>
           <a
@@ -144,9 +144,9 @@
           >
             Orders
           </a>
-          <% } %> <% if (path === '/admin/add-product') { %>
+          <% } %> <% if (path === '/admin/add-entree') { %>
           <a
-            href="/admin/add-product"
+            href="/admin/add-entree"
             class="
               border-indigo-500
               text-gray-900
@@ -159,11 +159,11 @@
               font-medium
             "
           >
-            Add Product
+            Add Entrée
           </a>
           <% } else { %>
           <a
-            href="/admin/add-product"
+            href="/admin/add-entree"
             class="
               border-transparent
               text-gray-500
@@ -177,11 +177,11 @@
               font-medium
             "
           >
-            Add Product
+            Add Entrée
           </a>
-          <% } %> <% if (path === '/admin/product') { %>
+          <% } %> <% if (path === '/admin/menu') { %>
           <a
-            href="/admin/products"
+            href="/admin/menu"
             class="
               border-indigo-500
               text-gray-900
@@ -194,11 +194,11 @@
               font-medium
             "
           >
-            Product Admin
+            Manage Menu
           </a>
           <% } else { %>
           <a
-            href="/admin/products"
+            href="/admin/menu"
             class="
               border-transparent
               text-gray-500
@@ -212,7 +212,7 @@
               font-medium
             "
           >
-            Product Admin
+            Manage Menu
           </a>
           <% } %>
         </div>

@@ -65,7 +65,7 @@
                           <div class="flex justify-between">
                             <h4 class="text-sm">
                               <a
-                                href="/products/<%= p.productData.id %>"
+                                href="/menu/<%= p.productData.id %>"
                                 class="
                                   font-medium
                                   text-gray-700
@@ -96,7 +96,6 @@
                               space-x-2
                             "
                           >
-                            <!-- Heroicon name: solid/check -->
                             <svg
                               class="flex-shrink-0 h-5 w-5 text-green-500"
                               xmlns="http://www.w3.org/2000/svg"
@@ -138,11 +137,14 @@
            
                     <% }) %> <% } else { %>
 
-                    <p class="mx-3 my-4">There are no products in the cart. Visit the <a href="/products" class="
+                    <p class="mx-3 my-4">There isn't anything yummy in the cart yet.
+             <br />
+             <br />
+                      Visit the <a href="/menu" class="
                       text-indigo-600
                       font-medium
                       hover:text-indigo-500
-                    ">products</a> page to find something you love.</p>
+                    ">menu</a> to find your next mouth-watering meal.</p>
 
                     <% } %>
 
@@ -165,7 +167,7 @@
                       </div>
                     </dl>
                     <p class="mt-1 text-sm text-gray-500">
-                      Shipping and taxes will be calculated at checkout.
+                      Taxes will be calculated at checkout.
                     </p>
                   </div>
 
@@ -191,6 +193,7 @@
                       focus:ring-offset-2
                       focus:ring-offset-gray-50
                       focus:ring-indigo-500
+                      disabled:opacity-50
                       "
                       >
                       Checkout
@@ -202,7 +205,7 @@
                     <p>
                       or
                       <a
-                        href="/products"
+                        href="/menu"
                         class="
                           text-indigo-600
                           font-medium
