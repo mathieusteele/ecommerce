@@ -26,7 +26,7 @@ exports.getProductById = (req, res, next) => {
 exports.getProducts = (req, res, next) => {
   Product.fetchAll((products) => {
     res.render("shop/product-list", {
-      title: "All Menu Items",
+      title: "Menu",
       path: "/menu",
       products: products,
     });

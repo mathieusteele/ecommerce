@@ -3,7 +3,7 @@ const Product = require("../models/product");
 exports.getProducts = (req, res, next) => {
   Product.fetchAll((products) => {
     res.render("admin/menu", {
-      title: "Admin Menu",
+      title: "Manage Menu",
       path: "/admin/menu",
       products: products,
     });
