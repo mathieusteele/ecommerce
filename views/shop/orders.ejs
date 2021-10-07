@@ -28,7 +28,24 @@
           </h1>
           <div class="mt-12 text-center">
             <section aria-labelledby="orders-heading">
-              <h2>Not yet implemented</h2>
+              <h2>Orders</h2>
+
+              <% if (orders.length <= 0) { %>
+              <h1>Nothing there!</h1>
+              <% } else { %>
+              <ul>
+                <% orders.forEach(order => { %>
+                <li>
+                  <h1>Order - # <%= order._id %></h1>
+                  <ul>
+                    <% order.items.forEach(product => { %>
+                    <li><%= product.title %> (<%= product.quantity %>)</li>
+                    <% }); %>
+                  </ul>
+                </li>
+                <% }); %>
+              </ul>
+              <% } %>
             </section>
           </div>
         </div>

@@ -1,5 +1,5 @@
 <form action="/add-to-cart" method="POST">
-  <input type="hidden" name="productId" value="<%= product.id %>" />
+  <input type="hidden" name="productId" value="<%= product._id %>" />
   <button
     type="submit"
     class="
@@ -27,26 +27,4 @@
   >
     Add to Cart
   </button>
-  <!-- <button
-    type="submit"
-    class="
-      mx-auto
-      inline-flex
-      justify-center
-      py-4
-      px-4
-      border border-transparent
-      shadow-sm
-      text-sm
-      font-medium
-      rounded-md
-      text-white
-      bg-indigo-600
-      hover:bg-indigo-700
-      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
-    "
-    role="button"
-  >
-    Add to Cart
-  </button> -->
 </form>

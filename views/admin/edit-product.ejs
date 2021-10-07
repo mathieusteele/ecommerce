@@ -143,7 +143,7 @@
               </div>
             </div>
             <% if (editing) { %>
-            <input type="hidden" name="productId" value="<%= product.id %>" />
+            <input type="hidden" name="productId" value="<%= product._id %>" />
             <% } %>
 
             <div class="mx-auto sm:col-span-3">
@@ -177,7 +177,7 @@
 
         <% if (editing) { %>
         <form action="/admin/delete-entree" method="POST">
-          <input type="hidden" name="productId" value="<%= product.id %>" />
+          <input type="hidden" name="productId" value="<%= product._id %>" />
 
           <button
             type="submit"
