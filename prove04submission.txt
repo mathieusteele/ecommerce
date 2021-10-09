@@ -1,0 +1,39 @@
+After completing the assignment, be sure to push to Github and Heroku.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application (e.g., Heroku):
+
+https://serene-atoll-95168.herokuapp.com/menu
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+
+https://github.com/mathieusteele/ecommerce
+
+3. Briefly list and describe the elements of the application that are functioning. 
+
+Users can view a menu of options and add them to cart. Upon pressing the checkout button, the cart is converted to an order and the cart is cleared. The admin user can CRUD menu items.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+
+No known expectations are unmet.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+
+I enjoyed learning MongoDB because I have heard a lot about it and now I know what all the fuss is about. I also set up my local dev environment to store the mongodb connection string in an environment variable that can stay out of source control so the secrets are not leaked (I'm using a public repo so you can see my code and grade it.)
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+
+I would encourage the best-practice approach of storing secrets outside of the code repo. I did share a writeup of how I accomplished this in Teams in Tips and Tricks but would be happy to share more.
+
+7. Please select the category you feel best describes your assignment:
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+I feel my assignment is a 4 or a 5.
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+
+I did try to exceed the requirements but I only did a little more than was asked of me this week.
