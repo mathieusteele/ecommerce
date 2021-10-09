@@ -1,1 +1,44 @@
-[{"id":"0.7543109554091831","title":"Meatball Sub","imageUrl":"https://wdd341.s3.amazonaws.com/meatballs.webp","description":"Savor the flavor with this submarine sandwich featuring homemade italian bread, toasted to perfection and smothered with meatballs and marinara sauce and covered with mozzarella cheese. Your tastebuds will not be bored!","priceInCents":1499},{"id":"0.2812772102919614","title":"Autumn Pumpkin Soup","imageUrl":"https://wdd341.s3.amazonaws.com/pumpkin-soup.webp","description":"Warm up on a cool fall day with this hearty soup made fresh daily. Pair with a crusty slice of artisan bread for a true treat.","priceInCents":1199},{"id":"0.006964814906903483","title":"Everyday Walnut Salad","imageUrl":"https://wdd341.s3.amazonaws.com/walnut-salad.webp","description":"Enjoy the fresh taste of your favorite greens with added protein from walnuts and cheese.","priceInCents":1299},{"id":"0.7574673635390712","title":"Unforgettable Sour Cream Burger","imageUrl":"https://wdd341.s3.amazonaws.com/slider.webp","description":"You'll be coming back for more with this super moist flavorful cheeseburger. ","priceInCents":1798.9999999999998},{"id":"0.06471930318570873","title":"Cheesy Pasta Bake","imageUrl":"https://wdd341.s3.amazonaws.com/baked-pasta.webp","description":"Savor the taste of home with this bowtie pasta bake. Warm from the oven, you'll be taking an afternoon nap for sure.","priceInCents":1499},{"id":"0.6174853861022103","title":"Grilled Salmon with Steamed Asparagus","imageUrl":"https://wdd341.s3.amazonaws.com/salmon.webp","description":"Enjoy the taste of the sea with this seasoned and grilled fresh-caught salmon with buttery steamed asparagus","priceInCents":1898.9999999999998}]
+[
+  {
+    "id": "0.7543109554091831",
+    "title": "Meatball Sub",
+    "imageUrl": "https://wdd341.s3.amazonaws.com/meatballs.webp",
+    "description": "Savor the flavor with this submarine sandwich featuring homemade italian bread, toasted to perfection and smothered with meatballs and marinara sauce and covered with mozzarella cheese. Your tastebuds will not be bored!",
+    "priceInCents": 1499
+  },
+  {
+    "id": "0.2812772102919614",
+    "title": "Autumn Pumpkin Soup",
+    "imageUrl": "https://wdd341.s3.amazonaws.com/pumpkin-soup.webp",
+    "description": "Warm up on a cool fall day with this hearty soup made fresh daily. Pair with a crusty slice of artisan bread for a true treat.",
+    "priceInCents": 1199
+  },
+  {
+    "id": "0.006964814906903483",
+    "title": "Everyday Walnut Salad",
+    "imageUrl": "https://wdd341.s3.amazonaws.com/walnut-salad.webp",
+    "description": "Enjoy the fresh taste of your favorite greens with added protein from walnuts and cheese.",
+    "priceInCents": 1299
+  },
+  {
+    "id": "0.7574673635390712",
+    "title": "Unforgettable Sour Cream Burger",
+    "imageUrl": "https://wdd341.s3.amazonaws.com/slider.webp",
+    "description": "You'll be coming back for more with this super moist flavorful cheeseburger. ",
+    "priceInCents": 1798.9999999999998
+  },
+  {
+    "id": "0.06471930318570873",
+    "title": "Cheesy Pasta Bake",
+    "imageUrl": "https://wdd341.s3.amazonaws.com/baked-pasta.webp",
+    "description": "Savor the taste of home with this bowtie pasta bake. Warm from the oven, you'll be taking an afternoon nap for sure.",
+    "priceInCents": 1499
+  },
+  {
+    "id": "0.6174853861022103",
+    "title": "Grilled Salmon with Steamed Asparagus",
+    "imageUrl": "https://wdd341.s3.amazonaws.com/salmon.webp",
+    "description": "Enjoy the taste of the sea with this seasoned and grilled fresh-caught salmon with buttery steamed asparagus",
+    "priceInCents": 1898.9999999999998
+  }
+]

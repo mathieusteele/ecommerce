@@ -1366,6 +1366,10 @@ select {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1450,6 +1454,11 @@ select {
 .text-red-500 {
   --tw-text-opacity: 1;
   color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
+
+.text-indigo-500 {
+  --tw-text-opacity: 1;
+  color: rgba(99, 102, 241, var(--tw-text-opacity));
 }
 
 .text-indigo-600 {

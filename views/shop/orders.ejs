@@ -33,14 +33,32 @@
               <% if (orders.length <= 0) { %>
               <h1>Nothing there!</h1>
               <% } else { %>
-              <ul>
+              <ul
+                role="list"
+                class="
+                  border-t border-b border-gray-200
+                  divide-y divide-gray-200
+                "
+              >
                 <% orders.forEach(order => { %>
-                <li>
+                <li class="flex py-6">
                   <h1>Order - # <%= order._id %></h1>
                   <ul>
-                    <% order.items.forEach(product => { %>
-                    <li><%= product.title %> (<%= product.quantity %>)</li>
+                    <% order.products.forEach(orderedProduct => { %>
+                    <li
+                      class="text-right ml-4 text-sm font-medium text-gray-900"
+                    >
+                      <%= orderedProduct.product.title %> (<%=
+                      orderedProduct.quantity %>) $<%=
+                      orderedProduct.product.price %>
+                    </li>
                     <% }); %>
+                    <li
+                      class="text-right ml-4 text-sm font-medium text-gray-900"
+                    >
+                      Total
+                      <span class="text-indigo-500">$<%= order.total %></span>
+                    </li>
                   </ul>
                 </li>
                 <% }); %>
