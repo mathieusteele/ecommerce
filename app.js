@@ -2,7 +2,6 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000;
-// const rootDir = require("./util/path");
 const mongoose = require("mongoose");
 
 const errorController = require("./controllers/error");
@@ -53,7 +52,6 @@ app
   .use(shopRoutes)
   .use("/admin", adminRoutes)
   .use(errorController.get404);
-// .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 mongoose
   .connect(process.env.MONGODB_URL, options)

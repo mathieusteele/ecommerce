@@ -3,7 +3,7 @@ const Order = require("../models/order");
 
 exports.getIndex = (req, res, next) => {
   res.render("shop/index", {
-    title: "Steele's Meals",
+    title: "Steeles Meals",
     path: "/",
   });
 };
