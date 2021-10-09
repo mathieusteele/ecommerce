@@ -52,8 +52,8 @@ app
   .use(bodyParser.urlencoded({ extended: false }))
   .use(shopRoutes)
   .use("/admin", adminRoutes)
-  .use(errorController.get404)
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  .use(errorController.get404);
+// .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 mongoose
   .connect(process.env.MONGODB_URL, options)
@@ -68,6 +68,6 @@ mongoose
         user.save();
       }
     });
-    app.listen(3000);
+    app.listen(PORT);
   })
   .catch((err) => console.log(err));
