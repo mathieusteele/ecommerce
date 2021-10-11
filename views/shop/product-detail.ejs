@@ -61,12 +61,15 @@
                   <p><%= product.description %></p>
                 </div>
               </div>
+              <% if (isAuthenticated) { %>
 
               <div class="mt-6">
                 <div class="mt-10 flex sm:flex-col1">
                   <%- include('../includes/add-to-cart.ejs') %>
                 </div>
               </div>
+
+              <% } %>
             </div>
           </div>
         </div>

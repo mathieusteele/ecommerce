@@ -9,6 +9,7 @@ exports.getProducts = (req, res, next) => {
         title: "Manage Menu",
         path: "/admin/menu",
         products: products,
+        isAuthenticated: req.session.user,
       });
     })
     .catch((err) => {
@@ -21,6 +22,7 @@ exports.getAddProduct = (req, res, next) => {
     title: "Add Entrée",
     path: "/admin/add-entree",
     editing: false,
+    isAuthenticated: req.session.user,
   });
 };
 
@@ -58,6 +60,7 @@ exports.getEditProduct = (req, res, next) => {
         path: "/admin/edit-entree",
         editing: editMode,
         product: product,
+        isAuthenticated: req.session.user,
       });
     })
     .catch((err) => {

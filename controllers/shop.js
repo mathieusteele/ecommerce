@@ -5,6 +5,7 @@ exports.getIndex = (req, res, next) => {
   res.render("shop/index", {
     title: "Steeles Meals",
     path: "/",
+    isAuthenticated: req.session.user,
   });
 };
 
@@ -17,6 +18,7 @@ exports.getProductById = (req, res, next) => {
         title: "Entrée Details",
         path: "/menu",
         product: product,
+        isAuthenticated: req.session.user,
       });
     })
     .catch((err) => {
@@ -31,6 +33,7 @@ exports.getProducts = (req, res, next) => {
         title: "Menu",
         path: "/menu",
         products: products,
+        isAuthenticated: req.session.user,
       });
     })
     .catch((err) => {
@@ -54,6 +57,7 @@ exports.getCart = (req, res, next) => {
         path: "/cart",
         products: user.cart.items,
         subtotal: parseInt(subtotal) / 100,
+        isAuthenticated: req.session.user,
       });
     })
     .catch((err) => console.log(err));
@@ -84,6 +88,7 @@ exports.getOrders = (req, res, next) => {
       title: "Your Orders",
       path: "/orders",
       orders: orders,
+      isAuthenticated: req.session.user,
     });
   });
 };
@@ -131,5 +136,6 @@ exports.getCheckout = (req, res, next) => {
   res.render("shop/checkout", {
     title: "Checkout",
     path: "/checkout",
+    isAuthenticated: req.session.user,
   });
 };
