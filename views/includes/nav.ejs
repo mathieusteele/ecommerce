@@ -250,9 +250,26 @@
           >
             Login
           </a>
-          <% } %> <% } else { %>
+          <% } %> <% if (path === '/sign-up') { %>
           <a
-            href="/logout"
+            href="/sign-up"
+            class="
+              border-indigo-500
+              text-gray-900
+              inline-flex
+              items-center
+              px-1
+              pt-1
+              border-b-2
+              text-sm
+              font-medium
+            "
+          >
+            Sign Up
+          </a>
+          <% } else { %>
+          <a
+            href="/sign-up"
             class="
               border-transparent
               text-gray-500
@@ -266,8 +283,42 @@
               font-medium
             "
           >
-            Logout
+            Sign Up
           </a>
+          <% } %> <% } else { %>
+          <form
+            action="/logout"
+            method="POST"
+            class="
+              border-transparent
+              text-gray-500
+              hover:border-gray-300 hover:text-gray-700
+              inline-flex
+              items-center
+              px-1
+              pt-1
+              border-b-2
+              text-sm
+              font-medium
+            "
+          >
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button
+              class="
+                border-transparent
+                text-gray-500
+                inline-flex
+                items-center
+                px-1
+                pt-1
+                border-b-2
+                text-sm
+                font-medium
+              "
+            >
+              Logout
+            </button>
+          </form>
 
           <% } %>
         </div>

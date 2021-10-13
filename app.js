@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const csrf = require("csurf");
+const flash = require("connect-flash");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -22,6 +24,8 @@ const store = new MongoDBStore({
   collection: "sessions",
 });
 
+const csrfProtection = csrf({});
+
 const cors = require("cors");
 const corsOptions = {
   origin: "https://serene-atoll-95168.herokuapp.com/",
@@ -30,15 +34,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  // useCreateIndex: true,
-  // useFindAndModify: false,
-  family: 4,
-};
-
 app
+  .set("view engine", "ejs")
+  // .set("views", path.join(__dirname, "views"))
+  .set("views", "views")
+  .use(bodyParser.urlencoded({ extended: false }))
   .use(express.static(path.join(__dirname, "public")))
   .use(
     session({
@@ -48,6 +48,8 @@ app
       store: store,
     })
   )
+  .use(csrfProtection)
+  .use(flash())
   .use((req, res, next) => {
     if (!req.session.user) {
       return next();
@@ -58,35 +60,28 @@ app
         next();
       })
       .catch((err) => console.log(err));
-    // User.findById("615fb0873f78780cf8470875")
-    //   .then((user) => {
-    //     req.user = user;
-    //     next();
-    //   })
-    //   .catch((err) => console.log(err));
   })
-  .set("views", path.join(__dirname, "views"))
-  .set("views", "views")
-  .set("view engine", "ejs")
-  .use(bodyParser.urlencoded({ extended: false }))
-  .use(shopRoutes)
+  .use((req, res, next) => {
+    res.locals.isAuthenticated = req.session.isLoggedIn;
+    res.locals.csrfToken = req.csrfToken();
+    next();
+  })
   .use("/admin", adminRoutes)
+  .use(shopRoutes)
   .use(authRoutes)
   .use(errorController.get404);
 
+const mongooseOptions = {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  family: 4,
+};
+
 mongoose
-  .connect(MONGODB_URL, options)
+  .connect(MONGODB_URL, mongooseOptions)
   .then((result) => {
-    // User.findOne().then((user) => {
-    //   if (!user) {
-    //     const user = new User({
-    //       name: "Mathieu",
-    //       email: "matt@steeleagency.com",
-    //       cart: { items: [] },
-    //     });
-    //     user.save();
-    //   }
-    // });
     app.listen(PORT);
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log(err);
+  });

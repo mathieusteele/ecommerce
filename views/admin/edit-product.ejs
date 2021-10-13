@@ -32,6 +32,7 @@
           class="mt-12"
           action="/admin/<% if (editing) { %>edit-entree<% } else { %>add-entree<% } %>"
         >
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-3">
             <div class="sm:col-span-3">
               <label
@@ -177,6 +178,7 @@
 
         <% if (editing) { %>
         <form action="/admin/delete-entree" method="POST">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <input type="hidden" name="productId" value="<%= product._id %>" />
 
           <button
