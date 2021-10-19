@@ -16,33 +16,7 @@
       <div
         class="bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
       >
-        <% if (successMessage) { %>
-        <div class="rounded-md bg-green-50 p-4 max-w-3xl mx-auto">
-          <div class="flex">
-            <div class="flex-shrink-0">
-              <svg
-                class="h-5 w-5 text-green-400"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </div>
-            <div class="ml-3">
-              <h3 class="text-sm font-medium text-green-800">Success</h3>
-              <div class="mt-2 text-sm text-green-700">
-                <p><%= successMessage %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% } %> <% if (errorMessage) { %>
+        <% if (errorMessage) { %>
         <div class="rounded-md bg-red-50 p-4 max-w-3xl mx-auto">
           <div class="flex">
             <div class="flex-shrink-0">
@@ -76,22 +50,22 @@
 
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
+            Reset your password
           </h2>
           <p class="mt-2 text-center text-sm text-gray-600">
             Or
             <a
-              href="/sign-up"
+              href="/login"
               class="font-medium text-indigo-600 hover:text-indigo-500"
             >
-              sign up now
+              log in now
             </a>
           </p>
         </div>
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form class="space-y-6" action="/login" method="POST">
+            <form class="space-y-6" action="/reset" method="POST">
               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
               <div>
@@ -107,39 +81,6 @@
                     name="email"
                     type="email"
                     autocomplete="email"
-                    required
-                    class="
-                      appearance-none
-                      block
-                      w-full
-                      px-3
-                      py-2
-                      border border-gray-300
-                      rounded-md
-                      shadow-sm
-                      placeholder-gray-400
-                      focus:outline-none
-                      focus:ring-indigo-500
-                      focus:border-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  for="password"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Password
-                </label>
-                <div class="mt-1">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autocomplete="current-password"
                     required
                     class="
                       appearance-none
@@ -183,18 +124,8 @@
                     focus:ring-indigo-500
                   "
                 >
-                  Sign in
+                  Reset Password
                 </button>
-              </div>
-              <div class="flex justify-end">
-                <div class="text-sm">
-                  <a
-                    href="/reset"
-                    class="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
               </div>
             </form>
           </div>

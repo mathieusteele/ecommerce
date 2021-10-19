@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%- include('../includes/nav.ejs') %> <% if (products.length > 0) { %>
+    <%- include('../includes/nav.ejs') %>
 
     <div class="bg-white">
       <div class="max-w-7xl mx-auto overflow-hidden sm:px-6 lg:px-8">
@@ -27,9 +27,11 @@
           >
             Manage Menu
           </h1>
+          <% if (products.length > 0) { %>
           <p class="text-center text-gray-600 mt-2">
             Click an item to edit or delete.
           </p>
+          <% } %>
         </div>
 
         <div
@@ -40,6 +42,7 @@
             sm:mx-0
             md:grid-cols-3
             lg:grid-cols-4
+            md:mb-8
           "
         >
           <% for (let product of products) { %>
@@ -80,8 +83,43 @@
             </div>
           </div>
 
-          <% } %> <% } else { %> There are NO entrees. Please
-          <a href="/admin/add-entree">add</a> some! <% } %>
+          <% } %>
+
+          <a
+            href="/admin/add-entree"
+            class="
+              relative
+              block
+              w-full
+              border-2 border-gray-300 border-dashed
+              rounded-lg
+              p-12
+              text-center
+              hover:border-gray-400
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mx-auto h-12 w-12 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span class="mt-2 block text-sm font-medium text-gray-900">
+              Create a new Entree
+            </span>
+          </a>
         </div>
       </div>
     </div>
