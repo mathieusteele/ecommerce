@@ -56,7 +56,7 @@
                     rounded-md
                   "
                   value="<% if
-                  (editing) { %><%= product.title %><% } %>"
+                  (editing || hasError) { %><%= product.title %><% } %>"
                 />
               </div>
             </div>
@@ -85,7 +85,7 @@
                   type="number"
                   step="0.01"
                   value="<% if
-          (editing) { %><%= product.price %><% } %>"
+          (editing || hasError) { %><%= product.price %><% } %>"
                 />
               </div>
             </div>
@@ -113,7 +113,7 @@
                     rounded-md
                   "
                 >
-<% if (editing) { %><%= product.description %><% } %></textarea
+<% if (editing || hasError) { %><%= product.description %><% } %></textarea
                 >
               </div>
             </div>
@@ -139,11 +139,11 @@
                     rounded-md
                   "
                   value="<% if
-                  (editing) { %><%= product.imageUrl %><% } %>"
+                  (editing || hasError) { %><%= product.imageUrl %><% } %>"
                 />
               </div>
             </div>
-            <% if (editing) { %>
+            <% if (editing || hasError) { %>
             <input type="hidden" name="productId" value="<%= product._id %>" />
             <% } %>
 
@@ -170,13 +170,14 @@
                   focus:ring-indigo-500
                 "
               >
-                <% if (editing) { %>Update<% } else { %>Add<% } %> Entree
+                <% if (editing || hasError) { %>Update<% } else { %>Add<% } %>
+                Entree
               </button>
             </div>
           </div>
         </form>
 
-        <% if (editing) { %>
+        <% if (editing || hasError) { %>
         <form action="/admin/delete-entree" method="POST">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <input type="hidden" name="productId" value="<%= product._id %>" />

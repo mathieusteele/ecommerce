@@ -69,7 +69,17 @@ app
   .use("/admin", adminRoutes)
   .use(shopRoutes)
   .use(authRoutes)
-  .use(errorController.get404);
+  .get("/500", errorController.get500)
+  .use(errorController.get404)
+  .use((error, req, res, next) => {
+    // res.status(error.httpStatusCode).render(...);
+    // res.redirect('/500');
+    res.status(500).render("500", {
+      pageTitle: "Error!",
+      path: "/500",
+      isAuthenticated: req.session.isLoggedIn,
+    });
+  });
 
 const mongooseOptions = {
   useUnifiedTopology: true,
