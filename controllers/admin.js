@@ -96,6 +96,7 @@ exports.postEditProduct = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
+    // try {
     return res.status(422).render("admin/edit-product", {
       title: "Edit Entrée",
       path: "/admin/edit-product",
@@ -111,6 +112,9 @@ exports.postEditProduct = (req, res, next) => {
       errorMessage: errors.array()[0].msg,
       validationErrors: errors.array(),
     });
+    // } catch (err) {
+    //   console.log(error);
+    // }
   }
 
   Product.findById(productId)
