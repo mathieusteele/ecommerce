@@ -231,7 +231,7 @@ exports.postReset = (req, res, next) => {
           html: `
           <p>You requested a password reset</p>
 
-          <p>Click this <a href="${process.env.PROJECT_URL}/${token}">link</a> to set a new password</p>
+          <p>Click this <a href="${process.env.PROJECT_URL}/reset/${token}">link</a> to set a new password</p>
           
        `,
         });
@@ -277,6 +277,20 @@ exports.postNewPassword = (req, res, next) => {
   const newPassword = req.body.password;
   const userId = req.body.userId;
   const passwordToken = req.body.passwordToken;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors.array());
+
+    res.status(422).render("auth/new-password", {
+      path: "/new-password",
+      title: "New Password",
+      errorMessage: errors.array()[0].msg,
+      userId: userId.toString(),
+      passwordToken: passwordToken,
+      validationErrors: errors.array(),
+    });
+  }
 
   let resetUser;
 
