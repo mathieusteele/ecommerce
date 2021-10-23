@@ -18,12 +18,13 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
+
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    // console.log(errors.array());
+    console.log(errors.array());
     return res.status(422).render("admin/edit-product", {
-      pageTitle: "Add Entrée",
+      title: "Add Entrée",
       path: "/admin/add-entree",
       editing: false,
       hasError: true,
@@ -96,7 +97,7 @@ exports.postEditProduct = (req, res, next) => {
 
   if (!errors.isEmpty()) {
     return res.status(422).render("admin/edit-product", {
-      pageTitle: "Edit Entrée",
+      title: "Edit Entrée",
       path: "/admin/edit-product",
       editing: true,
       hasError: true,
