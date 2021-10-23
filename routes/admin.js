@@ -37,10 +37,23 @@ router.get("/edit-entree/:productId", isAuth, adminController.getEditProduct);
 router.post(
   "/edit-entree",
   [
-    body("title").isString().isLength({ min: 3 }).trim(),
-    body("imageUrl").isURL(),
-    body("price").isFloat(),
-    body("description").isLength({ min: 5, max: 400 }).trim(),
+    body("title")
+      .isString()
+      .isLength({ min: 3 })
+      .trim()
+      .withMessage("the title must be at least 3 characters long"),
+    body("imageUrl")
+      .isURL()
+      .withMessage(
+        "The image URL is a required field and did not contain a valid URL."
+      ),
+    body("price")
+      .isFloat()
+      .withMessage("The price was not valid. Please try again."),
+    body("description")
+      .isLength({ min: 5, max: 400 })
+      .trim()
+      .withMessage("The description must be between 5 and 400 characters."),
   ],
   isAuth,
   adminController.postEditProduct
