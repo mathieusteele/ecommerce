@@ -54,6 +54,27 @@ userSchema.methods.addToCart = function (product) {
   return this.save();
 };
 
+userSchema.methods.removeOneFromCart = function (product) {
+  const cartProductIndex = this.cart.items.findIndex((cp) => {
+    return cp.product.toString() === product._id.toString();
+  });
+  let newQuantity = 1;
+  const updatedCartItems = [...this.cart.items];
+
+  if (cartProductIndex >= 0) {
+    newQuantity = this.cart.items[cartProductIndex].quantity - 1;
+    if (newQuantity == 0) {
+      return this.removeFromCart(product._id);
+    }
+    updatedCartItems[cartProductIndex].quantity = newQuantity;
+  }
+  const updatedCart = {
+    items: updatedCartItems,
+  };
+  this.cart = updatedCart;
+  return this.save();
+};
+
 userSchema.methods.removeFromCart = function (productId) {
   const updatedCartItems = this.cart.items.filter((item) => {
     return item.product.toString() !== productId.toString();

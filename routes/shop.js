@@ -8,9 +8,9 @@ const router = express.Router();
 router.get("/", shopController.getIndex);
 
 router.post("/add-to-cart", isAuth, shopController.postAddToCart);
+router.post("/remove-one", isAuth, shopController.postRemoveOneFromCart);
 router.post("/cart-delete-item", isAuth, shopController.postCartDeleteProduct);
 router.get("/cart", isAuth, shopController.getCart);
-// router.get("/checkout", shopController.getCheckout);
 router.get("/orders", isAuth, shopController.getOrders);
 router.post("/create-order", isAuth, shopController.postOrder);
 router.get("/menu", shopController.getProducts);
