@@ -82,8 +82,38 @@ router.get("/reset/:token", authController.getNewPassword);
 
 router.get("/reset", authController.getReset);
 
-router.post("/reset", authController.postReset);
+router.post(
+  "/reset",
+  [
+    body("email")
+      .isEmail()
+      .withMessage("Please enter a valid email address.")
+      .normalizeEmail()
+      .custom((value, { req }) => {
+        return User.findOne({ email: value }).then((userDoc) => {
+          if (!userDoc) {
+            return Promise.reject(
+              "There is no registered user with that email address. Please create an account instead."
+            );
+          }
+        });
+      }),
+  ],
+  authController.postReset
+);
 
-router.post("/new-password", authController.postNewPassword);
+router.post(
+  "/new-password",
+  [
+    body(
+      "password",
+      "Please enter a password with letters and numbers and at least 5 characters"
+    )
+      .isLength({ min: 5 })
+      .isAlphanumeric()
+      .trim(),
+  ],
+  authController.postNewPassword
+);
 
 module.exports = router;
