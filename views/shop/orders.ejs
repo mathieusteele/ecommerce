@@ -48,7 +48,7 @@
                     >
                       <%= orderedProduct.product.title %> (<%=
                       orderedProduct.quantity %>) $<%=
-                      orderedProduct.product.price %>
+                      orderedProduct.product.price.toFixed(2) %>
                     </li>
                     <% }); %>
                     <li
