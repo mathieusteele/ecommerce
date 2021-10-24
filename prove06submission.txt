@@ -1,0 +1,39 @@
+After completing the assignment, be sure to push to Github and Heroku.
+Please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application (e.g., Heroku):
+
+https://serene-atoll-95168.herokuapp.com/menu
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+
+https://github.com/mathieusteele/ecommerce
+
+3. Briefly list and describe the elements of the application that are functioning. 
+
+Visitors can create an account, log in, CRUD menu items (update and delete only items they created!), add items to cart, complete an order, reset password. 
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+
+The admin forms (add/edit menu items) only work with valid data. Instead of showing the user a helpful message and displaying the form, instead a 500 error shows. 
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+
+I enjoyed seeing the restaurant website come together and I liked the self-service features of having users reset their own passwords and the data validation.
+
+6. If you could change this assignment to be more effective or helpful, what would you change?
+
+I would like to have taken it to the next step of setting up payment processing through a 3rd party payment processor integration.  
+  
+7. Please select the category you feel best describes your assignment:
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+   5
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+
+I added a tool to increment/decrement the number of the item in the cart so consumers can easily edit the cart while in the cart (more than just removing the item completely.)
